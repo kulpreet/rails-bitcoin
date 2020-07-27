@@ -1,0 +1,16 @@
+<h1>Track a new address</h1>
+
+<p>
+Currently we only support Bitcoin addresses.
+</p>
+
+<%= form_with scope: :address, url: addresses_path do |form| %>
+    <p>
+      <%= form.label :address %><br>
+      <%= form.text_field :address %>
+    </p>
+      
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
