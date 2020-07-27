@@ -1,0 +1,19 @@
+<h1>Address tracked</h1>
+ 
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Balance</th>
+    <th>Transactions</th>
+    <th></th>
+  </tr>
+ 
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.address %></td>
+      <td>placeholder</td>
+      <td>placeholder</td>
+      <td><%= link_to 'Show', address_path(address) %></td>
+    </tr>
+  <% end %>
+</table>

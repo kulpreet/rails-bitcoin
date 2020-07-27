@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :addresses
 
-  root 'home#index'
+  root 'addresses#index'
 end
