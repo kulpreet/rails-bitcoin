@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
 
     def index
+        @address = Address.new
         @addresses = Address.all
     end
 
@@ -16,11 +17,11 @@ class AddressesController < ApplicationController
  
         if @address.save
             flash[:notice] = "Address successfully saved."
-            redirect_to @address
         else
             flash[:error] = "Unable to save address."
-            render :new
         end
+        @addresses = Address.all
+        render :index
     end
 
     private

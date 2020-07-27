@@ -1,5 +1,28 @@
-<h1>Address tracked</h1>
+<div class="pb-5">
+    <h1>Add a new address</h1>
+        <%= form_with scope: :address, url: addresses_path, local: true do |form| %>
+            <div class="form-row align-items-center">
+                <div class="col-7">
+                    <%= form.text_field :address, 
+                    class: "form-control mb-2 mr-sm-2 " +
+                        (@address.errors.include?(:address) ? 'is-invalid' : '') %>
+                </div>
+                <div class="col-5">
+                    <%= form.submit class: "btn btn-primary mb-2 mr-sm-2" %>
+                </div>
+                <div class="col-7">
+                    <% if @address.errors.include?(:address) %>
+                        <div class="invalid-feedback d-block">
+                            <%= @address.errors[:address].first %>
+                        </div>
+                    <% end %>        
+                </div>
+            </div>
+        <% end %>
+</div>
 
+
+<h1>Addresses tracked</h1>
 <div class="d-lg-none">
     <ul class="list-group list-group-flush">
         <% @addresses.each do |address| %>
