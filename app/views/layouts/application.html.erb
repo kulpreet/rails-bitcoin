@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>Bitcoin Address Tracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">
+        <%= image_tag("BC_Logo_.png", size: "30x30", class: "d-inline-block align-top", alt:"", loading:"lazy") %>
+        Bitcoin Address Tracker
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>  
+    </nav>
+
+    <div class="container-sm">
+      <div class="row">
+        <div class="col mt-5">
+              <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

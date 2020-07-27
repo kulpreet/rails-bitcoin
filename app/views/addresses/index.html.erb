@@ -1,19 +1,39 @@
 <h1>Address tracked</h1>
- 
-<table>
-  <tr>
-    <th>Address</th>
-    <th>Balance</th>
-    <th>Transactions</th>
-    <th></th>
-  </tr>
- 
-  <% @addresses.each do |address| %>
-    <tr>
-      <td><%= address.address %></td>
-      <td>placeholder</td>
-      <td>placeholder</td>
-      <td><%= link_to 'Show', address_path(address) %></td>
-    </tr>
-  <% end %>
-</table>
+
+<div class="d-lg-none">
+    <ul class="list-group list-group-flush">
+        <% @addresses.each do |address| %>
+            <a href="<%=address_path(address)%>" class="list-group-item list-group-item-action">
+                <h1><%= address.address %></h1>
+                <h3>placeholder</h3>
+                <h3>placeholder</h3>
+            </a>
+        <% end %>
+    </ul>
+</div>
+
+<div class="d-none d-lg-block">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th cope="col">Address</th>
+                    <th cope="col">Balance</th>
+                    <th cope="col">Transactions</th>
+                    <th cope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @addresses.each do |address| %>
+                    <tr>
+                    <td><%= address.address %></td>
+                    <td>placeholder</td>
+                    <td>placeholder</td>
+                    <td><%= link_to 'Show', address_path(address) %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
