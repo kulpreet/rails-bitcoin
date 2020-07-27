@@ -13,13 +13,8 @@ class AddressesController < ApplicationController
     end
 
     def create
-        @address = Address.new(address_params)
- 
-        if @address.save
-            flash[:notice] = "Address successfully saved."
-        else
-            flash[:error] = "Unable to save address."
-        end
+        @address = Address.new(address_params) 
+        @address.save
         @addresses = Address.all
         render :index
     end

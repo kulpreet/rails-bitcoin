@@ -14,8 +14,8 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
         x: 100
       }
     }
-    assert_redirected_to address_path(Address.last)
-    assert_equal 'Address successfully saved.', flash[:notice]
+    assert_select 'h1', '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2'
+    assert_response :success
     end
 
 
@@ -26,7 +26,8 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
           x: 100
         }
       }
-      assert_equal 'Unable to save address.', flash[:error]
-      end
+      assert !Address.exists?(address: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2ABCDE')
+      assert_response :success
+    end
   
 end
