@@ -1,0 +1,19 @@
+one:
+    block_height: 1
+    time: 2020-01-01
+    tx_hash: hash_1
+    tx_index: 0
+    version: 0
+    size: 100
+    addresses: [one]
+    time: 1595947191
+
+two:
+    block_height: 1
+    time: 2020-01-01
+    tx_hash: hash_2
+    tx_index: 1
+    version: 0
+    size: 100
+    addresses: [one]
+    time: 1595947191

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_045817) do
+ActiveRecord::Schema.define(version: 2020_07_28_140020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,58 @@ ActiveRecord::Schema.define(version: 2020_07_28_045817) do
     t.index ["address"], name: "index_addresses_on_address"
   end
 
+  create_table "addresses_btc_transactions", id: false, force: :cascade do |t|
+    t.bigint "address_id"
+    t.bigint "btc_transaction_id"
+    t.index ["address_id"], name: "index_addresses_btc_transactions_on_address_id"
+    t.index ["btc_transaction_id"], name: "index_addresses_btc_transactions_on_btc_transaction_id"
+  end
+
+  create_table "btc_transactions", force: :cascade do |t|
+    t.boolean "double_spend", default: false
+    t.integer "block_height", null: false
+    t.integer "time", null: false
+    t.string "relayed_by"
+    t.string "tx_hash", null: false
+    t.integer "tx_index", null: false
+    t.integer "version", null: false
+    t.integer "size", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.integer "n"
+    t.integer "value"
+    t.integer "tx_index"
+    t.integer "type"
+    t.string "script"
+    t.string "script_sig"
+    t.integer "sequence"
+    t.bigint "address_id", null: false
+    t.bigint "btc_transaction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_inputs_on_address_id"
+    t.index ["btc_transaction_id"], name: "index_inputs_on_btc_transaction_id"
+  end
+
+  create_table "outputs", force: :cascade do |t|
+    t.integer "n"
+    t.integer "value"
+    t.integer "tx_index"
+    t.string "script"
+    t.boolean "spent"
+    t.bigint "address_id", null: false
+    t.bigint "btc_transaction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_outputs_on_address_id"
+    t.index ["btc_transaction_id"], name: "index_outputs_on_btc_transaction_id"
+  end
+
+  add_foreign_key "inputs", "addresses"
+  add_foreign_key "inputs", "btc_transactions"
+  add_foreign_key "outputs", "addresses"
+  add_foreign_key "outputs", "btc_transactions"
 end

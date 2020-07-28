@@ -22,4 +22,14 @@ class AddressTest < ActiveSupport::TestCase
     assert address.save, "Couldn't save p2pkh address"
   end
 
+  test "associations with btc transaction, inputs and outputs" do
+    address = addresses(:one)
+    assert_equal 2, address.btc_transactions.count
+    assert_equal 1, address.btc_transactions.where(tx_hash: "hash_1").count
+
+    tx1 = address.btc_transactions.where(tx_hash: "hash_1").first
+    assert_equal 1, tx1.inputs.count
+    assert_equal 2, tx1.outputs.count
+  end
+
 end
