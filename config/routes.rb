@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :addresses
 
   root 'addresses#index'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
