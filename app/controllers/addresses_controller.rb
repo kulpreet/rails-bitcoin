@@ -14,7 +14,9 @@ class AddressesController < ApplicationController
 
     def create
         @address = Address.new(address_params) 
-        @address.save
+        if @address.save
+            FetchTransactionsJob.perform_later(@address.address)
+        end
         @addresses = Address.all
         render :index
     end

@@ -2,7 +2,7 @@ class CreateOutputs < ActiveRecord::Migration[5.2]
   def change
     create_table :outputs do |t|
       t.integer :n
-      t.integer :value
+      t.bigint :value
       t.integer :tx_index
       t.string :script
       t.boolean :spent
