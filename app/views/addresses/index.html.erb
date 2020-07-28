@@ -29,7 +29,7 @@
             <a href="<%=address_path(address)%>" class="list-group-item list-group-item-action">
                 <h1><%= address.address %></h1>
                 <h3>
-                    <%= number_to_currency((address.total_received - address.total_sent) / 1e8, precision: 8, unit: "") %> BTC
+                    <%= number_to_currency((address.total_received.to_i - address.total_sent.to_i) / 1e8, precision: 8, unit: "") %> BTC
                 </h3>
                 <h3><%= address.n_tx %></h3>
             </a>
@@ -53,7 +53,7 @@
                     <tr>
                     <td><%= address.address %></td>
                     <td>
-                        <%= number_to_currency((address.total_received - address.total_sent) / 1e8, precision: 8, unit: "") %> BTC
+                        <%= number_to_currency((address.total_received.to_i - address.total_sent.to_i) / 1e8, precision: 8, unit: "") %> BTC
                     </td>
                     <td><%= address.n_tx %></td>
                     <td><%= link_to 'Show', address_path(address) %></td>

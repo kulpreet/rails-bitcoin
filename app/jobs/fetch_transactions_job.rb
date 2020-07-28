@@ -39,7 +39,7 @@ class FetchTransactionsJob < ApplicationJob
         offset = address.btc_transactions.count + 1
         Rails.logger.debug "Enqueue with #{offset}"
         puts "Enqueue with #{offset}"
-        FetchTransactionsJob.set(wait: 5.seconds)perform_later(address.address, offset)
+        FetchTransactionsJob.set(wait: 5.seconds).perform_later(address.address, offset)
       end
     end
   end
