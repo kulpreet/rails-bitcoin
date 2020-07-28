@@ -1,0 +1,17 @@
+<dl class="row">
+    <dt class="col-sm-3">Hash</dt>
+    <dd class="col-sm-9"><%= tx.tx_hash %></dd>
+
+    <dt class="col-sm-3">Block</dt>
+    <dd class="col-sm-9"><%= tx.block_height %></dd>
+
+    <dt class="col-sm-3">Sum Inputs</dt>
+    <dd class="col-sm-9"><%= number_to_currency(tx.inputs.sum(:value) / 1e8, precision: 8, unit: "") %> BTC</dd>
+
+    <dt class="col-sm-3">Sum Outputs</dt>
+    <dd class="col-sm-9"><%= number_to_currency(tx.outputs.sum(:value) / 1e8, precision: 8, unit: "") %> BTC</dd>
+
+    <dt class="col-sm-3">Time</dt>
+    <dd class="col-sm-9"><%= Time.at(tx.time) %></dd>
+</dl>
+<hr/>

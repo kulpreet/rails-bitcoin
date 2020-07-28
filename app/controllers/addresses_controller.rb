@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
 
     def show
         @address = Address.find(params[:id])
+        @transactions = @address.btc_transactions.paginate(page: params[:page])
     end
 
     def new

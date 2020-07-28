@@ -22,6 +22,7 @@ gem 'jquery-rails'
 
 gem 'blockchain'
 gem 'sidekiq'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

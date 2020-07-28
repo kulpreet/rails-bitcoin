@@ -4,6 +4,8 @@ class BtcTransaction < ApplicationRecord
     has_many :inputs
     has_many :outputs
 
+    self.per_page = 5
+
     def self.create_from(tx, address)
         t = create(
             double_spend: tx.double_spend,

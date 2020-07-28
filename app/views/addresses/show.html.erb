@@ -1,3 +1,26 @@
 
 <h1>Transactions</h1>
-<h3><%=@address.address%></h3>
+<h3>Address: <%=@address.address%></h3>
+
+<dl class="row">
+  <dt class="col-sm-3">Total received</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@address.total_received / 1e8, precision: 8, unit: "") %> BTC
+  </dd>
+
+  <dt class="col-sm-3">Total sent</dt>
+  <dd class="col-sm-9">
+    <%= number_to_currency(@address.total_sent / 1e8, precision: 8, unit: "") %> BTC
+  </dd>
+</dl>
+
+<hr class="my-5"/>
+
+<%= render partial: "tx", collection: @transactions %>
+
+<div class="apple_pagination mb-5">
+    <div class="page_info">
+      <%= page_entries_info @transactions %>
+    </div>
+    <%= will_paginate @transactions, :container => false %>
+</div>
