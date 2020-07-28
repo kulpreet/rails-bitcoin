@@ -50,6 +50,7 @@ GEM
     autoprefixer-rails (9.8.5)
       execjs
     bindex (0.8.1)
+    blockchain (3.0.1)
     bootsnap (1.4.7)
       msgpack (~> 1.0)
     bootstrap (4.5.0)
@@ -209,6 +210,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blockchain
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5.0)
   byebug
